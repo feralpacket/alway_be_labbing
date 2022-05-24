@@ -2,11 +2,11 @@
 Stuff for doing network labs
 
 Loopbacks
- - Lots of them
- - When you need a large number of prefixes in your network lab environment
+ - Lots of them.
+ - When you need a large number of prefixes in your network lab environment.
 
 Narbik OSPF Lab
- - Loopbacks / prefixes to use if you want to lab up Narbik's OSPF LSA class
+ - Loopbacks / prefixes to use if you want to lab up Narbik's OSPF LSA class.
  - WARNING:  These use public IP addresses.
 
 Router Lab Pre-configurations
