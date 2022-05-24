@@ -1,0 +1,1151 @@
+! Router Lab 2x6(VPN - 4 sites, redundant core):
+! 1 - 2 - 3 - 4 -  5 -  6
+! |   |     X      |    |
+! 7 - 8 - 9 - 10 - 11 - 12
+
+NETMAP:
+/* SWITCHES: * R1: * -c:R1.txt -e1 -s0 /
+/ SWITCHES: * R2: * -c:R2.txt -e1 -s0 /
+/ SWITCHES: * R3: * -c:R3.txt -e1 -s0 /
+/ SWITCHES: * R4: * -c:R4.txt -e1 -s0 /
+/ SWITCHES: * R5: * -c:R5.txt -e1 -s0 /
+/ SWITCHES: * R6: * -c:R6.txt -e1 -s0 /
+/ SWITCHES: * R7: * -c:R7.txt -e1 -s0 /
+/ SWITCHES: * R8: * -c:R8.txt -e1 -s0 /
+/ SWITCHES: * R9: * -c:R9.txt -e1 -s0 /
+/ SWITCHES: * R10: * -c:R10.txt -e1 -s0 /
+/ SWITCHES: * R11: * -c:R11.txt -e1 -s0 /
+/ SWITCHES: * R12: * -c:R12.txt -e1 -s0 /
+/ Router Connections */
+1:0/0 2:0/0
+2:0/1 3:0/1
+2:0/2 8:0/2
+3:0/0 4:0/0
+3:0/2 9:0/2
+3:0/3 10:0/3
+4:0/1 5:0/1
+4:0/2 10:0/2
+4:0/3 9:0/3
+5:0/0 6:0/0
+5:0/2 11:0/2
+7:0/0 8:0/0
+8:0/1 9:0/1
+9:0/0 10:0/0
+10:0/1 11:0/1
+11:0/0 12:0/0
+
+———————————————————————————————— R1
+
+en
+conf t
+!
+host R1
+!
+int e0/0
+ip add 12.1.1.1 255.255.255.0
+no shut
+!
+int lo0
+ip add 1.1.1.1 255.255.255.0
+!
+no ip domain-lookup
+line con 0
+exec-timeout 0 0
+!
+end
+
+———————————————————————————————— R2
+
+en
+conf t
+!
+host R2
+!
+int e0/0
+ip add 12.1.1.2 255.255.255.0
+no shut
+!
+int e0/1
+ip add 23.1.1.2 255.255.255.0
+no shut
+!
+int e0/2
+ip add 28.1.1.2 255.255.255.0
+no shut
+!
+int lo0
+ip add 2.2.2.2 255.255.255.0
+!
+no ip domain-lookup
+line con 0
+exec-timeout 0 0
+!
+end
+
+———————————————————————————————— R3
+
+en
+conf t
+!
+host R3
+!
+int e0/0
+ip add 34.1.1.3 255.255.255.0
+no shut
+!
+int e0/1
+ip add 23.1.1.3 255.255.255.0
+no shut
+!
+int e0/2
+ip add 39.1.1.3 255.255.255.0
+no shut
+!
+int e0/3
+ip add 103.1.1.3 255.255.255.0
+no shut
+!
+int lo0
+ip add 3.3.3.3 255.255.255.0
+!
+no ip domain-lookup
+line con 0
+exec-timeout 0 0
+!
+end
+
+———————————————————————————————— R4
+
+en
+conf t
+!
+host R4
+!
+int e0/0
+ip add 34.1.1.4 255.255.255.0
+no shut
+!
+int e0/1
+ip add 45.1.1.4 255.255.255.0
+no shut
+!
+int e0/2
+ip add 104.1.1.4 255.255.255.0
+no shut
+!
+int e0/3
+ip add 49.1.1.4 255.255.255.0
+no shut
+!
+int lo0
+ip add 4.4.4.4 255.255.255.0
+!
+no ip domain-lookup
+line con 0
+exec-timeout 0 0
+!
+end
+
+———————————————————————————————— R5
+
+en
+conf t
+!
+host R5
+!
+int e0/0
+ip add 56.1.1.5 255.255.255.0
+no shut
+!
+int e0/1
+ip add 45.1.1.5 255.255.255.0
+no shut
+!
+int e0/2
+ip add 115.1.1.5 255.255.255.0
+no shut
+!
+int lo0
+ip add 5.5.5.5 255.255.255.0
+!
+no ip domain-lookup
+line con 0
+exec-timeout 0 0
+!
+end
+
+———————————————————————————————— R6
+
+en
+conf t
+!
+host R6
+!
+int e0/0
+ip add 56.1.1.6 255.255.255.0
+no shut
+!
+int lo0
+ip add 6.6.6.6 255.255.255.0
+!
+no ip domain-lookup
+line con 0
+exec-timeout 0 0
+!
+end
+
+———————————————————————————————— R7
+
+en
+conf t
+!
+host R7
+!
+int e0/0
+ip add 78.1.1.7 255.255.255.0
+no shut
+!
+int lo0
+ip add 7.7.7.7 255.255.255.0
+!
+no ip domain-lookup
+line con 0
+exec-timeout 0 0
+!
+end
+
+———————————————————————————————— R8
+
+en
+conf t
+!
+host R8
+!
+int e0/0
+ip add 78.1.1.8 255.255.255.0
+no shut
+!
+int e0/1
+ip add 89.1.1.8 255.255.255.0
+no shut
+!
+int e0/2
+ip add 28.1.1.8 255.255.255.0
+no shut
+!
+int lo0
+ip add 8.8.8.8 255.255.255.0
+!
+no ip domain-lookup
+line con 0
+exec-timeout 0 0
+!
+end
+
+———————————————————————————————— R9
+
+en
+conf t
+!
+host R9
+!
+int e0/0
+ip add 109.1.1.9 255.255.255.0
+no shut
+!
+int e0/1
+ip add 89.1.1.9 255.255.255.0
+no shut
+!
+int e0/2
+ip add 39.1.1.9 255.255.255.0
+no shut
+!
+int e0/3
+ip add 49.1.1.9 255.255.255.0
+no shut
+!
+int lo0
+ip add 9.9.9.9 255.255.255.0
+!
+no ip domain-lookup
+line con 0
+exec-timeout 0 0
+!
+end
+
+———————————————————————————————— R10
+
+en
+conf t
+!
+host R10
+!
+int e0/0
+ip add 109.1.1.10 255.255.255.0
+no shut
+!
+int e0/1
+ip add 111.1.1.10 255.255.255.0
+no shut
+!
+int e0/2
+ip add 104.1.1.10 255.255.255.0
+no shut
+!
+int e0/3
+ip add 103.1.1.10 255.255.255.0
+no shut
+!
+int lo0
+ip add 10.10.10.10 255.255.255.0
+!
+no ip domain-lookup
+line con 0
+exec-timeout 0 0
+!
+end
+
+———————————————————————————————— R11
+
+en
+conf t
+!
+host R11
+!
+int e0/0
+ip add 112.1.1.11 255.255.255.0
+no shut
+!
+int e0/1
+ip add 111.1.1.11 255.255.255.0
+no shut
+!
+int e0/2
+ip add 115.1.1.11 255.255.255.0
+no shut
+!
+int lo0
+ip add 11.11.11.11 255.255.255.0
+!
+no ip domain-lookup
+line con 0
+exec-timeout 0 0
+!
+end
+
+———————————————————————————————— R12
+
+en
+conf t
+!
+host R12
+!
+int e0/0
+ip add 112.1.1.12 255.255.255.0
+no shut
+!
+int lo0
+ip add 12.12.12.12 255.255.255.0
+!
+no ip domain-lookup
+line con 0
+exec-timeout 0 0
+!
+end
+
+IPv6 Initial Config:
+
+———————————————————————— R1
+
+en
+conf t
+!
+host R1
+!
+ipv6 uni
+ipv6 cef
+!
+int lo0
+ipv6 add 1::1/64
+ipv6 add fe80::1 link
+!
+int e0/0
+ipv6 add 12::1/64
+ipv6 add fe80::1 link
+no shut
+!
+no ip domain-lookup
+!
+line con 0
+exec-timeout 0 0
+line vty 0 4
+login
+pass cisco
+transport input all
+!
+end
+
+———————————————————————— R2
+
+en
+conf t
+!
+host R2
+!
+ipv6 uni
+ipv6 cef
+!
+int lo0
+ipv6 add 2::2/64
+ipv6 add fe80::2 link
+!
+int e0/0
+ipv6 add 12::2/64
+ipv6 add fe80::2 link
+no shut
+!
+int e0/1
+ipv6 add 23::2/64
+ipv6 add fe80::2 link
+no shut
+!
+int e0/2
+ipv6 add 68::2/64
+ipv6 add fe80::2 link
+no shut
+!
+no ip domain-lookup
+!
+line con 0
+exec-timeout 0 0
+line vty 0 4
+login
+pass cisco
+transport input all
+!
+end
+
+———————————————————————— R3
+
+en
+conf t
+!
+host R3
+!
+ipv6 uni
+ipv6 cef
+!
+int lo0
+ipv6 add 3::3/64
+ipv6 add fe80::3 link
+!
+int e0/1
+ipv6 add 23::3/64
+ipv6 add fe80::3 link
+no shut
+!
+int e0/0
+ipv6 add 34::3/64
+ipv6 add fe80::3 link
+no shut
+!
+int e0/2
+ipv6 add 39::3/64
+ipv6 add fe80::3 link
+no shut
+!
+int e0/3
+ipv6 add 103::3/64
+ipv6 add fe80::3 link
+no shut
+!
+no ip domain-lookup
+!
+line con 0
+exec-timeout 0 0
+line vty 0 4
+login
+pass cisco
+transport input all
+!
+end
+
+———————————————————————— R4
+
+en
+conf t
+!
+host R4
+!
+ipv6 uni
+ipv6 cef
+!
+int lo0
+ipv6 add 4::4/64
+ipv6 add fe80::4 link
+!
+int e0/0
+ipv6 add 34::4/64
+ipv6 add fe80::4 link
+no shut
+!
+int e0/1
+ipv6 add 45::4/64
+ipv6 add fe80::4 link
+no shut
+!
+int e0/2
+ipv6 add 104::4/64
+ipv6 add fe80::4 link
+no shut
+!
+int e0/3
+ipv6 add 49::4/64
+ipv6 add fe80::4 link
+no shut
+!
+no ip domain-lookup
+!
+line con 0
+exec-timeout 0 0
+line vty 0 4
+login
+pass cisco
+transport input all
+!
+end
+
+———————————————————————— R5
+
+en
+conf t
+!
+host R5
+!
+ipv6 uni
+ipv6 cef
+!
+int lo0
+ipv6 add 5::5/64
+ipv6 add fe80::5 link
+!
+int e0/1
+ipv6 add 45::5/64
+ipv6 add fe80::5 link
+no shut
+!
+int e0/0
+ipv6 add 56::5/64
+ipv6 add fe80::5 link
+no shut
+!
+int e0/2
+ipv6 add 115::5/64
+ipv6 add fe80::5 link
+no shut
+!
+no ip domain-lookup
+!
+line con 0
+exec-timeout 0 0
+line vty 0 4
+login
+pass cisco
+transport input all
+!
+end
+
+———————————————————————— R6
+
+en
+conf t
+!
+host R6
+!
+ipv6 uni
+ipv6 cef
+!
+int lo0
+ipv6 add 6::6/64
+ipv6 add fe80::6 link
+!
+int e0/0
+ipv6 add 56::6/64
+ipv6 add fe80::6 link
+no shut
+!
+no ip domain-lookup
+!
+line con 0
+exec-timeout 0 0
+line vty 0 4
+login
+pass cisco
+transport input all
+!
+end
+
+———————————————————————— R7
+
+en
+conf t
+!
+host R7
+!
+ipv6 uni
+ipv6 cef
+!
+int lo0
+ipv6 add 7::7/64
+ipv6 add fe80::7 link
+!
+int e0/0
+ipv6 add 78::7/64
+ipv6 add fe80::7 link
+no shut
+!
+no ip domain-lookup
+!
+line con 0
+exec-timeout 0 0
+line vty 0 4
+login
+pass cisco
+transport input all
+!
+end
+
+———————————————————————— R8
+
+en
+conf t
+!
+host R8
+!
+ipv6 uni
+ipv6 cef
+!
+int lo0
+ipv6 add 8::8/64
+ipv6 add fe80::8 link
+!
+int e0/0
+ipv6 add 78::8/64
+ipv6 add fe80::8 link
+no shut
+!
+int e0/1
+ipv6 add 89::8/64
+ipv6 add fe80::8 link
+no shut
+!
+int e0/2
+ipv6 add 28::8/64
+ipv6 add fe80::8 link
+no shut
+!
+no ip domain-lookup
+!
+line con 0
+exec-timeout 0 0
+line vty 0 4
+login
+pass cisco
+transport input all
+!
+end
+
+———————————————————————— R9
+
+en
+conf t
+!
+host R9
+!
+ipv6 uni
+ipv6 cef
+!
+int lo0
+ipv6 add 9::9/64
+ipv6 add fe80::9 link
+!
+int e0/1
+ipv6 add 89::9/64
+ipv6 add fe80::9 link
+no shut
+!
+int e0/0
+ipv6 add 109::9/64
+ipv6 add fe80::9 link
+no shut
+!
+int e0/2
+ipv6 add 39::9/64
+ipv6 add fe80::9 link
+no shut
+!
+int e0/3
+ipv6 add 49::9/64
+ipv6 add fe80::9 link
+no shut
+!
+no ip domain-lookup
+!
+line con 0
+exec-timeout 0 0
+line vty 0 4
+login
+pass cisco
+transport input all
+!
+end
+
+———————————————————————— R10
+
+en
+conf t
+!
+host R10
+!
+ipv6 uni
+ipv6 cef
+!
+int lo0
+ipv6 add 10::10/64
+ipv6 add fe80::10 link
+!
+int e0/0
+ipv6 add 109::10/64
+ipv6 add fe80::10 link
+no shut
+!
+int e0/1
+ipv6 add 111::10/64
+ipv6 add fe80::10 link
+no shut
+!
+int e0/2
+ipv6 add 104::10/64
+ipv6 add fe80::10 link
+no shut
+!
+int e0/3
+ipv6 add 103::10/64
+ipv6 add fe80::10 link
+no shut
+!
+no ip domain-lookup
+!
+line con 0
+exec-timeout 0 0
+line vty 0 4
+login
+pass cisco
+transport input all
+!
+end
+
+———————————————————————— R11
+
+en
+conf t
+!
+host R11
+!
+ipv6 uni
+ipv6 cef
+!
+int lo0
+ipv6 add 11::11/64
+ipv6 add fe80::11 link
+!
+int e0/0
+ipv6 add 112::11/64
+ipv6 add fe80::11 link
+no shut
+!
+int e0/1
+ipv6 add 111::11/64
+ipv6 add fe80::11 link
+no shut
+!
+int e0/2
+ipv6 add 115::11/64
+ipv6 add fe80::11 link
+no shut
+!
+no ip domain-lookup
+!
+line con 0
+exec-timeout 0 0
+line vty 0 4
+login
+pass cisco
+transport input all
+!
+end
+
+———————————————————————— R12
+
+en
+conf t
+!
+host R12
+!
+ipv6 uni
+ipv6 cef
+!
+int lo0
+ipv6 add 12::12/64
+ipv6 add fe80::12 link
+!
+int e0/0
+ipv6 add 112::12/64
+ipv6 add fe80::12 link
+no shut
+!
+no ip domain-lookup
+!
+line con 0
+exec-timeout 0 0
+line vty 0 4
+login
+pass cisco
+transport input all
+!
+end
+
+EIGRP IPv4 and IPv6 Initial Config:
+
+———————————————————————— R1
+
+en
+conf t
+!
+router eigrp 27
+eigrp router-id 1.1.1.1
+netw 1.1.1.1 0.0.0.0
+netw 12.1.1.1 0.0.0.0
+!
+ipv6 router eigrp 27
+eigrp router-id 1.1.1.1
+!
+int lo0
+ipv6 eigrp 27
+!
+int e0/0
+ipv6 eigrp 27
+!
+end
+
+———————————————————————— R2
+
+en
+conf t
+!
+router eigrp 27
+eigrp router-id 2.2.2.2
+netw 2.2.2.2 0.0.0.0
+netw 12.1.1.2 0.0.0.0
+netw 23.1.1.2 0.0.0.0
+netw 28.1.1.2 0.0.0.0
+!
+ipv6 router eigrp 27
+eigrp router-id 2.2.2.2
+!
+int lo0
+ipv6 eigrp 27
+!
+int e0/0
+ipv6 eigrp 27
+!
+int e0/1
+ipv6 eigrp 27
+!
+int e0/2
+ipv6 eigrp 27
+!
+end
+
+———————————————————————— R3
+
+en
+conf t
+!
+router eigrp 27
+eigrp router-id 3.3.3.3
+netw 3.3.3.3 0.0.0.0
+netw 23.1.1.3 0.0.0.0
+netw 34.1.1.3 0.0.0.0
+netw 39.1.1.3 0.0.0.0
+netw 103.1.1.3 0.0.0.0
+!
+ipv6 router eigrp 27
+eigrp router-id 3.3.3.3
+!
+int lo0
+ipv6 eigrp 27
+!
+int e0/0
+ipv6 eigrp 27
+!
+int e0/1
+ipv6 eigrp 27
+!
+int e0/2
+ipv6 eigrp 27
+!
+int e0/3
+ipv6 eigrp 27
+!
+end
+
+———————————————————————— R4
+
+en
+conf t
+!
+router eigrp 27
+eigrp router-id 4.4.4.4
+netw 4.4.4.4 0.0.0.0
+netw 34.1.1.4 0.0.0.0
+netw 45.1.1.4 0.0.0.0
+netw 49.1.1.4 0.0.0.0
+netw 104.1.1.4 0.0.0.0
+!
+ipv6 router eigrp 27
+eigrp router-id 4.4.4.4
+!
+int lo0
+ipv6 eigrp 27
+!
+int e0/0
+ipv6 eigrp 27
+!
+int e0/1
+ipv6 eigrp 27
+!
+int e0/2
+ipv6 eigrp 27
+!
+int e0/3
+ipv6 eigrp 27
+!
+end
+
+———————————————————————— R5
+
+en
+conf t
+!
+router eigrp 27
+eigrp router-id 5.5.5.5
+netw 5.5.5.5 0.0.0.0
+netw 45.1.1.5 0.0.0.0
+netw 56.1.1.5 0.0.0.0
+netw 115.1.1.5 0.0.0.0
+!
+ipv6 router eigrp 27
+eigrp router-id 5.5.5.5
+!
+int lo0
+ipv6 eigrp 27
+!
+int e0/0
+ipv6 eigrp 27
+!
+int e0/1
+ipv6 eigrp 27
+!
+int e0/2
+ipv6 eigrp 27
+!
+end
+
+———————————————————————— R6
+
+en
+conf t
+!
+router eigrp 27
+eigrp router-id 6.6.6.6
+netw 6.6.6.6 0.0.0.0
+netw 56.1.1.6 0.0.0.0
+!
+ipv6 router eigrp 27
+eigrp router-id 6.6.6.6
+!
+int lo0
+ipv6 eigrp 27
+!
+int e0/0
+ipv6 eigrp 27
+!
+end
+
+———————————————————————— R7
+
+en
+conf t
+!
+router eigrp 27
+eigrp router-id 7.7.7.7
+netw 7.7.7.7 0.0.0.0
+netw 78.1.1.7 0.0.0.0
+!
+ipv6 router eigrp 27
+eigrp router-id 7.7.7.7
+!
+int lo0
+ipv6 eigrp 27
+!
+int e0/0
+ipv6 eigrp 27
+!
+end
+
+———————————————————————— R8
+
+en
+conf t
+!
+router eigrp 27
+eigrp router-id 8.8.8.8
+netw 8.8.8.8 0.0.0.0
+netw 28.1.1.8 0.0.0.0
+netw 78.1.1.8 0.0.0.0
+netw 89.1.1.8 0.0.0.0
+!
+ipv6 router eigrp 27
+eigrp router-id 8.8.8.8
+!
+int lo0
+ipv6 eigrp 27
+!
+int e0/0
+ipv6 eigrp 27
+!
+int e0/1
+ipv6 eigrp 27
+!
+int e0/2
+ipv6 eigrp 27
+!
+end
+
+———————————————————————— R9
+
+en
+conf t
+!
+router eigrp 27
+eigrp router-id 9.9.9.9
+netw 9.9.9.9 0.0.0.0
+netw 39.1.1.9 0.0.0.0
+netw 49.1.1.9 0.0.0.0
+netw 89.1.1.9 0.0.0.0
+netw 109.1.1.9 0.0.0.0
+!
+ipv6 router eigrp 27
+eigrp router-id 9.9.9.9
+!
+int lo0
+ipv6 eigrp 27
+!
+int e0/0
+ipv6 eigrp 27
+!
+int e0/1
+ipv6 eigrp 27
+!
+int e0/2
+ipv6 eigrp 27
+!
+int e0/3
+ipv6 eigrp 27
+!
+end
+
+———————————————————————— R10
+
+en
+conf t
+!
+router eigrp 27
+eigrp router-id 10.10.10.10
+netw 10.10.10.10 0.0.0.0
+netw 103.1.1.10 0.0.0.0
+netw 104.1.1.10 0.0.0.0
+netw 109.1.1.10 0.0.0.0
+netw 111.1.1.10 0.0.0.0
+!
+ipv6 router eigrp 27
+eigrp router-id 10.10.10.10
+!
+int lo0
+ipv6 eigrp 27
+!
+int e0/0
+ipv6 eigrp 27
+!
+int e0/1
+ipv6 eigrp 27
+!
+int e0/2
+ipv6 eigrp 27
+!
+int e0/3
+ipv6 eigrp 27
+!
+end
+
+———————————————————————— R11
+
+en
+conf t
+!
+router eigrp 27
+eigrp router-id 11.11.11.11
+netw 11.11.11.11 0.0.0.0
+netw 111.1.1.11 0.0.0.0
+netw 115.1.1.11 0.0.0.0
+netw 112.1.1.11 0.0.0.0
+!
+ipv6 router eigrp 27
+eigrp router-id 11.11.11.11
+!
+int lo0
+ipv6 eigrp 27
+!
+int e0/0
+ipv6 eigrp 27
+!
+int e0/1
+ipv6 eigrp 27
+!
+int e0/2
+ipv6 eigrp 27
+!
+end
+
+———————————————————————— R12
+
+en
+conf t
+!
+router eigrp 27
+eigrp router-id 12.12.12.12
+netw 12.12.12.12 0.0.0.0
+netw 112.1.1.12 0.0.0.0
+!
+ipv6 router eigrp 27
+eigrp router-id 12.12.12.12
+!
+int lo0
+ipv6 eigrp 27
+!
+int e0/0
+ipv6 eigrp 27
+!
+end
