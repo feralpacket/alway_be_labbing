@@ -393,7 +393,12 @@ ipv6 add 12::1/64
 ipv6 add fe80::1 link
 no shut
 !
-no ip domain-lookup
+int e0/1
+ipv6 add 17::1/64
+ipv6 add fe80::1 link
+no shut
+!
+no ip domain lookup
 !
 line con 0
 exec-timeout 0 0
@@ -433,7 +438,7 @@ ipv6 add 68::2/64
 ipv6 add fe80::2 link
 no shut
 !
-no ip domain-lookup
+no ip domain lookup
 !
 line con 0
 exec-timeout 0 0
@@ -478,7 +483,7 @@ ipv6 add 103::3/64
 ipv6 add fe80::3 link
 no shut
 !
-no ip domain-lookup
+no ip domain lookup
 !
 line con 0
 exec-timeout 0 0
@@ -523,7 +528,7 @@ ipv6 add 49::4/64
 ipv6 add fe80::4 link
 no shut
 !
-no ip domain-lookup
+no ip domain lookup
 !
 line con 0
 exec-timeout 0 0
@@ -563,7 +568,7 @@ ipv6 add 115::5/64
 ipv6 add fe80::5 link
 no shut
 !
-no ip domain-lookup
+no ip domain lookup
 !
 line con 0
 exec-timeout 0 0
@@ -593,7 +598,12 @@ ipv6 add 56::6/64
 ipv6 add fe80::6 link
 no shut
 !
-no ip domain-lookup
+int e0/1
+ipv6 add 126::6/64
+ipv6 add fe80::6 link
+no shut
+!
+no ip domain lookup
 !
 line con 0
 exec-timeout 0 0
@@ -623,7 +633,12 @@ ipv6 add 78::7/64
 ipv6 add fe80::7 link
 no shut
 !
-no ip domain-lookup
+int e0/1
+ipv6 add 17::7/64
+ipv6 add fe80::7 link
+no shut
+!
+no ip domain lookup
 !
 line con 0
 exec-timeout 0 0
@@ -663,7 +678,7 @@ ipv6 add 28::8/64
 ipv6 add fe80::8 link
 no shut
 !
-no ip domain-lookup
+no ip domain lookup
 !
 line con 0
 exec-timeout 0 0
@@ -708,7 +723,7 @@ ipv6 add 49::9/64
 ipv6 add fe80::9 link
 no shut
 !
-no ip domain-lookup
+no ip domain lookup
 !
 line con 0
 exec-timeout 0 0
@@ -753,7 +768,7 @@ ipv6 add 103::10/64
 ipv6 add fe80::10 link
 no shut
 !
-no ip domain-lookup
+no ip domain lookup
 !
 line con 0
 exec-timeout 0 0
@@ -793,7 +808,7 @@ ipv6 add 115::11/64
 ipv6 add fe80::11 link
 no shut
 !
-no ip domain-lookup
+no ip domain lookup
 !
 line con 0
 exec-timeout 0 0
@@ -823,7 +838,12 @@ ipv6 add 112::12/64
 ipv6 add fe80::12 link
 no shut
 !
-no ip domain-lookup
+int e0/1
+ipv6 add 126::12/64
+ipv6 add fe80::12 link
+no shut
+!
+no ip domain lookup
 !
 line con 0
 exec-timeout 0 0
