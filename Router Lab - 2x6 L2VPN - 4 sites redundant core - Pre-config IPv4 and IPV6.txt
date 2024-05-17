@@ -865,6 +865,7 @@ router eigrp 27
 eigrp router-id 1.1.1.1
 netw 1.1.1.1 0.0.0.0
 netw 12.1.1.1 0.0.0.0
+netw 17.1.1.1 0.0.0.0
 !
 ipv6 router eigrp 27
 eigrp router-id 1.1.1.1
@@ -1010,6 +1011,7 @@ router eigrp 27
 eigrp router-id 6.6.6.6
 netw 6.6.6.6 0.0.0.0
 netw 56.1.1.6 0.0.0.0
+netw 126.1.1.6 0.0.0.0
 !
 ipv6 router eigrp 27
 eigrp router-id 6.6.6.6
@@ -1029,6 +1031,7 @@ conf t
 !
 router eigrp 27
 eigrp router-id 7.7.7.7
+netw 17.1.1.7 0.0.0.0
 netw 7.7.7.7 0.0.0.0
 netw 78.1.1.7 0.0.0.0
 !
@@ -1176,6 +1179,7 @@ router eigrp 27
 eigrp router-id 12.12.12.12
 netw 12.12.12.12 0.0.0.0
 netw 112.1.1.12 0.0.0.0
+netw 126.1.1.12 0.0.0.0
 !
 ipv6 router eigrp 27
 eigrp router-id 12.12.12.12
