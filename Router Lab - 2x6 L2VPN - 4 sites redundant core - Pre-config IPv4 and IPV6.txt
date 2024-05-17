@@ -47,6 +47,10 @@ int e0/0
 ip add 12.1.1.1 255.255.255.0
 no shut
 !
+int e0/1
+ip add 17.1.1.1 255.255.255.0
+no shut
+!
 int lo0
 ip add 1.1.1.1 255.255.255.0
 !
@@ -187,6 +191,10 @@ int e0/0
 ip add 56.1.1.6 255.255.255.0
 no shut
 !
+int e0/1
+ip add 126.1.1.6 255.255.255.0
+no shut
+!
 int lo0
 ip add 6.6.6.6 255.255.255.0
 !
@@ -205,6 +213,10 @@ host R7
 !
 int e0/0
 ip add 78.1.1.7 255.255.255.0
+no shut
+!
+int e0/1
+ip add 17.1.1.7 255.255.255.0
 no shut
 !
 int lo0
@@ -345,6 +357,10 @@ host R12
 !
 int e0/0
 ip add 112.1.1.12 255.255.255.0
+no shut
+!
+int e0/1
+ip add 126.1.1.12 255.255.255.0
 no shut
 !
 int lo0
