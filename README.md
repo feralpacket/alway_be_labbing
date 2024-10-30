@@ -14,3 +14,9 @@ Narbik OSPF Lab
 
 Router Lab Pre-configurations
  - If you need to quickly test something, but don't want to spend the time getting a lab up and running.
+
+
+Practice Lab
+ - Only setup for IOS devices, to make it light weight enough to not need a beefy server
+ - Only has IPv4 and IPv6 addresses configured
+
