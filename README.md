@@ -19,4 +19,5 @@ Router Lab Pre-configurations
 Practice Lab
  - Only setup for IOS devices, to make it light weight enough to not need a beefy server
  - Only has IPv4 and IPv6 addresses configured
+ - May be missing some loopbacks
 
