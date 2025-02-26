@@ -1,6 +1,11 @@
 # alway_be_labbing
 Stuff for doing network labs
 
+Vincent Zhou CCIE SP v3.0 Sample Lab
+ - Older, but covers the basic topics for SP
+ - 7 parts
+ - Uploading here because it's becoming harder to find them on Cisco's website
+
 
 Loopbacks
  - Lots of them.
